@@ -125,7 +125,7 @@ Looking at the stack layout in Ghidra (we can see it by double clicking on any o
 
 
 ```
-We can see that input starts at offset -0x43. We see that local_18 starts at offset -0x18. This gives us an offset of `0x43 - 0x18 = 0x2b` between the start of our input and local_18. Then we can just overflow it (write more data to a region than it can hold, so it spills over and starts overwriting subsequent things in memory) and overwrite `local_18` with `0xdea110c8`.
+We can see that input starts at offset `-0x43`. We see that `local_18` starts at offset `-0x18`. This gives us an offset of `0x43 - 0x18 = 0x2b` between the start of our input and `local_18`. Then we can just overflow it (write more data to a region than it can hold, so it spills over and starts overwriting subsequent things in memory) and overwrite `local_18` with `0xdea110c8`.
 ## Exploit
 So, in order to reach the `gets` call, we need to send the program string `Sir Lancelot of Camelot\n` and `To seek the Holy Grail.\n`. 
 Then we overwrite `local_18` with `0xdea110c8`. We got a exploit program:
